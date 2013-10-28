@@ -1043,6 +1043,10 @@
         }).appendTo(this.$el);
 
         this.$resized_widget.addClass('resizing');
+		
+		if (this.options.resize.start) {
+            this.options.resize.start.call(this.$resized_widget, event, ui);
+        }
     };
 
 
@@ -1069,6 +1073,10 @@
                     'min-height': ''
                 });
         }, this), 300);
+		
+		if (this.options.resize.stop) {
+            this.options.resize.stop.call(this.$resized_widget, event, ui);
+        }
     };
 
     /**
